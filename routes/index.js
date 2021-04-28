@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-router.get('/', home.home);
+router.get('/', homeController.home);
 
 
 
