@@ -1,3 +1,20 @@
-h1{
-    color:red;
+.left-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    
+}
+
+textarea{
+    border:1px solid black;
+    position: relative;
+    border-radius:5%;
+}
+
+
+.main_container{
+    width:100vw;
+    height:100%;
 }

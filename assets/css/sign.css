@@ -1,0 +1,18 @@
+.sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+}
+input, button{
+    width:25vw;
+    margin:7vh;
+    height:5vh;
+}
+
+button{
+    width: 40vw;
+    margin:0;
+}
+
