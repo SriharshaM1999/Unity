@@ -1,4 +1,4 @@
-const passport = require("passprt");
+const passport = require("passport");
 
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -6,13 +6,13 @@ const Users = require("../models/Users");
 
 passport.use(new LocalStrategy({
     usernameField:'email',
-    passReqToCallback:true
+    passReqToCallback:true,
 },
 
-function(req, email, pass, done){
+function(req,email, password, done){
 
 
-    User.findOne({email}, function(err,user){
+    Users.findOne({email:email}, function(err,user){
         if(err){
             return done(err);
         }
@@ -23,7 +23,7 @@ function(req, email, pass, done){
 
         return done(null, user);
 
-    })
+    }) 
 
 
 
@@ -37,22 +37,22 @@ function(req, email, pass, done){
 
 
 
-passport.SerializeUser(function(user, done){
+passport.serializeUser(function(user, done){
 
-    return done(null, user.id);
+     done(null, user.id);
 })
 
-passport.deSerializeUser(function(user_id,done){
+passport.deserializeUser(function(user_id,done){
 
 
-if(Users.findById(user_id),function(err,user){
+           Users.findById((user_id),function(err,user){
 
-if(err) {
-    return done(err);
-}
+                    if(err) {
+                        return done(err);
+                    }
 
-return done(null, user);
-});
+                    return done(null, user);
+             });
 
 
 })
@@ -76,3 +76,6 @@ passport.setAuthentication= function(req,res,next){
     next()
 
 }
+
+
+module.exports =passport;

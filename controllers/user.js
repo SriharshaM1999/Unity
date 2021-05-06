@@ -1,7 +1,7 @@
 const Users = require("../models/Users");
 
 
-module.exports.signUp = async function(req, res){
+module.exports.signUp =  function(req, res){
 
 
 

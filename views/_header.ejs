@@ -1,2 +1,21 @@
 <link rel="stylesheet" href ="/css/header.css" type ="text/css"/>
+
+<header>
+<div class ="left">
 <h2>Unity</h2>
+</div>
+
+<div class="right">
+
+<% if(locals.user) {%>
+<span><%=user.name%></span>       <!--  to be converted to anchor later -->
+<span>SignOut</span>       <!--  to be converted to anchor later -->
+
+
+<%}else{%>
+
+        <p>LoginIn/SignUp</p>
+
+<%}%>
+</div>
+</header>

@@ -6,9 +6,11 @@ const dB = require("./models/Users")
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const LocalStrategy = require("./config/passport");
+const session = require('express-session');
+const db = require("./config/mongoose");
+var MongoStore = new require('connect-mongodb-session')(session);
 
 
-// importing the userdefined Modules
  
 
 const port =8000;
@@ -34,7 +36,37 @@ app.use(express.urlencoded())
 app.use(cookieParser()); 
 
 
+app.use(session({
+    name:'Unity',
+    secret:"blahblahblah",
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*100)
+    },
+    // store: MongoStore.create({
+    //     mongoUrl: 'mongodb://localhost/Unity',
+    //     autoRemove:'disabled'   // refer this feauter later
+    // },
+    store: new MongoStore({
+        mongoConnection:db,
+        autoRemove:'disabled'
+    },
+    function(err){
+        console.log(err || "connect-mongo setup ok")
+    }
+    
+    )
 
+
+
+}))
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthentication);
 
 
 

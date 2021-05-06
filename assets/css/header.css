@@ -1,7 +1,21 @@
 h2{
-    width: 100vw;
-    background-color: rgba(23, 23, 88, 0.596);
     color:white;
     font-size: 1.5rem;
     padding:1rem;
 }
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    color:white;
+    background-color: rgba(23, 23, 88, 0.596);
+
+}
+
+.right{
+   margin-right:2rem;
+   padding:1rem;
+}
+
